@@ -12,8 +12,10 @@ const Table = () => {
 
   const filterData = () => {
     if (searchParameters.length == 0) setTableDetails(TableData);
-    let filteredData = tableDetails.filter(({ id, name }) => name == query);
-    setSearchParameters(filteredData);
+    if (query.length > 0) {
+      let filteredData = tableDetails.filter(({ id, name }) => name == query);
+      setSearchParameters(filteredData);
+    } else setSearchParameters(tableDetails);
   };
 
   useEffect(() => {
